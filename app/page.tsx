@@ -1,9 +1,11 @@
 "use client"; // This is a client component 
 
 import React, { useState } from "react"
+import { useRouter } from 'next/navigation'
+
 
 export default function Home() {
-
+  const router = useRouter()
   const [value, setValue] = useState({
     usuario: 'omariosouto',
     senha: 'safepassword'
@@ -23,7 +25,11 @@ export default function Home() {
   return (
     <>
       <h1>Login</h1>
-      <form onSubmit={(event) => { event.preventDefault() }}>
+      <form onSubmit={(event) => {
+        event.preventDefault();
+        router.push('/authentication-user');
+        router.push('/authentication-static');
+      }}>
         <input
           type="text"
           name="usuario"
@@ -42,7 +48,12 @@ export default function Home() {
           onChange={handleChange}
         />
         <div>
-          <button>entrar</button>
+          <button
+            type="button"
+            onClick={() => router.push('/authentication-user')
+            }>
+            entrar
+          </button>
         </div>
       </form>
     </>
