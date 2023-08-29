@@ -26,7 +26,6 @@ export default function Home() {
 
   return (
     <>
-      <h1>Login</h1>
       <form onSubmit={(event) => {
         event.preventDefault();
 
@@ -48,9 +47,13 @@ export default function Home() {
           value={value.usuario}
           placeholder="usuario"
           onChange={handleChange}
+
+
+
         />
         <pre>
           {JSON.stringify(value, null, 4)}
+
         </pre>
         <input
           type="password"
