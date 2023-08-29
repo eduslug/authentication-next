@@ -2,10 +2,12 @@
 
 import React, { useState } from "react"
 import { useRouter } from 'next/navigation'
+import { authService } from "./services/auth/authService";
 
 
 export default function Home() {
   const router = useRouter()
+
   const [value, setValue] = useState({
     usuario: 'omariosouto',
     senha: 'safepassword'
@@ -27,8 +29,18 @@ export default function Home() {
       <h1>Login</h1>
       <form onSubmit={(event) => {
         event.preventDefault();
-        router.push('/authentication-user');
-        router.push('/authentication-static');
+
+        authService
+          .login({
+            username: value.usuario,
+            password: value.senha,
+          })
+          .then(() => {
+            router.push('/authentication-static')
+          })
+          .catch(() => {
+            alert('Usuario ou senha errada')
+          })
       }}>
         <input
           type="text"
@@ -48,10 +60,7 @@ export default function Home() {
           onChange={handleChange}
         />
         <div>
-          <button
-            type="button"
-            onClick={() => router.push('/authentication-user')
-            }>
+          <button>
             entrar
           </button>
         </div>
