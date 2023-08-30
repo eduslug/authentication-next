@@ -1,6 +1,3 @@
-
-
-
 export const authService = {
     async login(prop: { username: string, password: string }): Promise<void> {
         return fetch('http://localhost:4000/api/login', {
@@ -13,9 +10,12 @@ export const authService = {
                 password: prop.password,
             })
         })
-            .then((respose) => {
+            .then(async (respose) => {
+                if (!respose.ok) throw new Error('Usuario invalido')
                 console.log(respose)
-                alert(`usuario Logado`)
+                const body = await respose.json()
+                console.log(body);
             })
     }
 }
+

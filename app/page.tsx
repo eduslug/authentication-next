@@ -25,9 +25,8 @@ export default function Home() {
   }
 
   return (
-    <>
-      <h1>Login</h1>
-      <form onSubmit={(event) => {
+    < >
+      <form className="grid h-screen place-items-center" onSubmit={(event) => {
         event.preventDefault();
 
         authService
@@ -42,17 +41,21 @@ export default function Home() {
             alert('Usuario ou senha errada')
           })
       }}>
-        <input
+        <input className="text-black flex-initial w-40"
           type="text"
           name="usuario"
           value={value.usuario}
           placeholder="usuario"
           onChange={handleChange}
+
+
+
         />
         <pre>
           {JSON.stringify(value, null, 4)}
+
         </pre>
-        <input
+        <input className="text-black flex-initial w-40"
           type="password"
           name="senha"
           value={value.senha}
