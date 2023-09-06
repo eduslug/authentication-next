@@ -24,50 +24,54 @@ export default function Home() {
     })
   }
 
-  return (
-    < >
-      <form className="grid h-screen place-items-center" onSubmit={(event) => {
-        event.preventDefault();
+  return (<div className="w-full max-w-xs ">
+    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 align-content: center" onSubmit={(event) => {
+      event.preventDefault();
 
-        authService
-          .login({
-            username: value.usuario,
-            password: value.senha,
-          })
-          .then(() => {
-            router.push('/authentication-static')
-          })
-          .catch(() => {
-            alert('Usuario ou senha errada')
-          })
-      }}>
-        <input className="text-black flex-initial w-40"
-          type="text"
-          name="usuario"
-          value={value.usuario}
-          placeholder="usuario"
-          onChange={handleChange}
-
-
-
-        />
-        <pre>
+      authService
+        .login({
+          username: value.usuario,
+          password: value.senha,
+        })
+        .then(() => {
+          router.push('/authentication-static')
+        })
+        .catch(() => {
+          alert('Usuario ou senha errada')
+        })
+    }}>
+      <label className="block text-gray-700 text-sm font-bold mb-2">Usuario</label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+        type="text"
+        name="usuario"
+        value={value.usuario}
+        placeholder="usuario"
+        onChange={handleChange}
+      />
+      {/* <pre>
           {JSON.stringify(value, null, 4)}
 
-        </pre>
-        <input className="text-black flex-initial w-40"
-          type="password"
-          name="senha"
-          value={value.senha}
-          placeholder="senha"
-          onChange={handleChange}
-        />
-        <div>
-          <button>
-            entrar
-          </button>
-        </div>
-      </form>
-    </>
+        </pre> */}
+      <label className="block text-gray-700 text-sm font-bold mb-2">Senha</label>
+      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        type="password"
+        name="senha"
+        value={value.senha}
+        placeholder="senha"
+        onChange={handleChange}
+      />
+      <div>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2  px-8 rounded focus:outline-none focus:shadow-outline">
+          entrar
+        </button>
+        <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+          Esqueceu a senha?
+        </a>
+      </div>
+    </form>
+    <p className="text-center text-gray-500 text-xs">
+      &copy;2023 Acme Corp. All rights reserved.Eduardo
+    </p>
+  </div>
   )
 }
