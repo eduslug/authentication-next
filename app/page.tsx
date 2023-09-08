@@ -24,7 +24,7 @@ export default function Home() {
     })
   }
 
-  return (<div className="w-full max-w-xs ">
+  return (<div className="flex flex-col items-center justify-center w-full min-w-0 space-y-8 md:py-4">
     <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 align-content: center" onSubmit={(event) => {
       event.preventDefault();
 
@@ -60,11 +60,11 @@ export default function Home() {
         placeholder="senha"
         onChange={handleChange}
       />
-      <div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2  px-8 rounded focus:outline-none focus:shadow-outline">
+      <div className="">
+        <button className="w-full min-w-min space-y-8 md:py-2  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2  px-8 rounded focus:outline-none focus:shadow-outline">
           entrar
         </button>
-        <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+        <a className="w-full min-w-0 space-y-8 md:py-4 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
           Esqueceu a senha?
         </a>
       </div>
