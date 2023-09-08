@@ -1,4 +1,4 @@
-
+import { tokenServices } from "../tokenServices";
 
 export const authService = {
     async login(prop: { username: string, password: string }): Promise<void> {
@@ -14,8 +14,10 @@ export const authService = {
         }).then(async (respose) => {
             if (!respose.ok) throw new Error('Usuario invalido')
             const body = await respose.json()
-            console.log(body);
+            console.log(body.data.access_token);
+            tokenServices.save(body.data.access_token)
         })
+        
     }
 }
 
