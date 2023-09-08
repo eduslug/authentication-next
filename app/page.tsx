@@ -36,7 +36,8 @@ export default function Home() {
         .then(() => {
           router.push('/authentication-static')
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err)
           alert('Usuario ou senha errada')
         })
     }}>
