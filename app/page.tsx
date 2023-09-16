@@ -16,6 +16,7 @@ export default function Home() {
   function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
     const fieldValue = event.target.value;
     const fieldName = event.target.name;
+    localStorage.setItem
     setValue((currentValues) => {
       return {
         ...currentValues,
