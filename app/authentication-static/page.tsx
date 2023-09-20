@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from 'next';
 import React from 'react'
-import { tokenService } from '../services/tokenServices'
 import nookies from 'nookies';
+import { tokenService } from '../services/tokenServices';
 
 function AuthenticationStatic(props: { value: string }) {
 
@@ -49,17 +49,17 @@ function AuthenticationStatic(props: { value: string }) {
 
 export default AuthenticationStatic
 
-
-/* export async function getServerSideProps(context: GetServerSidePropsContext) {
+/* 
+export async function getServerSideProps(context: GetServerSidePropsContext) {
     const cookies = nookies.get(context);
     console.log('cookies', cookies);
 
     // Assuming tokenServices.get(ctx) is the correct way to get the token
-    const token = tokenServices.get(context);
+    const token = tokenService.get();
 
     return {
         props: {
             token: token,
         },
     };
-} */
+}  */

@@ -11,21 +11,22 @@ const ONE_YEAR = ONE_DAY * 365;
 
 export const tokenService = {
 
-    save(props: { accessToken: string }, ctx = null) {
+    save(props: { access_token: string }, ctx = null) {
+        
         if (typeof window !== 'undefined') {
-            globalThis?.localStorage?.setItem(ACCESS_TOKEN_KEY, props.accessToken);
-            globalThis?.sessionStorage?.setItem(ACCESS_TOKEN_KEY, props.accessToken);
-            nookies.set(ctx, ACCESS_TOKEN_KEY, props.accessToken, {
+            globalThis?.localStorage?.setItem('ACCESS_TOKEN_KEY', props.access_token);
+            globalThis?.sessionStorage?.setItem('ACCESS_TOKEN_KEY', props.access_token);
+            nookies.set(ctx, ACCESS_TOKEN_KEY, props.access_token, {
                 maxAge: ONE_YEAR,
                 path: '/',
+                
             });
+            console.log(props.access_token)
         }
     },
     get(ctx = null) {
         const cookies = nookies.get(ctx);
         return cookies[ACCESS_TOKEN_KEY] || '';
-        // return globalThis?.localStorage?.getItem(ACCESS_TOKEN_KEY);
-        // return sessionStorage.getItem(ACCESS_TOKEN_KEY);
     },
     delete(ctx = null) {
         globalThis?.localStorage?.removeItem(ACCESS_TOKEN_KEY);
